@@ -1,0 +1,52 @@
+{
+  "applications": "*",
+  "changelogDate": "20240717152404",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "file",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["minlength", "maxlength", "required"],
+      "fieldValidateRulesMaxlength": "160",
+      "fieldValidateRulesMinlength": "2"
+    },
+    {
+      "fieldName": "date",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "fileUrl",
+      "fieldType": "String",
+      "fieldValidateRules": ["minlength", "maxlength", "required"],
+      "fieldValidateRulesMaxlength": "160",
+      "fieldValidateRulesMinlength": "2"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "File",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "folder",
+      "otherEntityRelationshipName": "file",
+      "relationshipName": "folder",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "filetype",
+      "otherEntityRelationshipName": "file",
+      "relationshipName": "filetype",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

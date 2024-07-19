@@ -1,0 +1,44 @@
+DEFAULT_MIN_LENGTH = 2
+DEFAULT_MAX_LENGTH = 160
+
+/**
+ * Author: Hope Ndhlovu
+ */
+
+/**
+ * Folder Entity and relationships.
+ */
+
+entity Filetype {
+    id Long,
+    type String minlength(DEFAULT_MIN_LENGTH) maxlength(DEFAULT_MAX_LENGTH) required
+}
+
+entity Folder {
+    id Long,
+    name String minlength(DEFAULT_MIN_LENGTH) maxlength(DEFAULT_MAX_LENGTH) required
+}
+
+entity File {
+    id Long,
+    name String minlength(DEFAULT_MIN_LENGTH) maxlength(DEFAULT_MAX_LENGTH) required,
+    date Instant required,
+    fileUrl String minlength(DEFAULT_MIN_LENGTH) maxlength(DEFAULT_MAX_LENGTH) required
+}
+
+relationship OneToMany {
+    Folder{file} to File{folder} // "required" moved to File entity attribute definition
+}
+
+relationship OneToMany {
+    Filetype{file} to File{filetype} // "required" moved to File entity attribute definition
+}
+
+// Pagination for all entities
+paginate all with pagination
+
+// Generate DTOs for all entities using MapStruct
+dto * with mapstruct
+
+// Set service options to generate service implementations for all entities
+service all with serviceImpl

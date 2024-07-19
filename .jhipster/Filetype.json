@@ -1,0 +1,35 @@
+{
+  "applications": "*",
+  "changelogDate": "20240717152402",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "filetype",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "String",
+      "fieldValidateRules": ["minlength", "maxlength", "required"],
+      "fieldValidateRulesMaxlength": "160",
+      "fieldValidateRulesMinlength": "2"
+    }
+  ],
+  "fluentMethods": true,
+  "javadoc": "Folder Entity and relationships.",
+  "jpaMetamodelFiltering": false,
+  "name": "Filetype",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "file",
+      "otherEntityRelationshipName": "filetype",
+      "relationshipName": "file",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}
